@@ -2,6 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 const port = 3000
 
 const app = express()
@@ -26,10 +27,19 @@ db.once ('open', () => {
 })
 
 
+// default use setting
+app.use(bodyParser.urlencoded({ extended: true }))
+
+
 // routes setting
 app.get('/', (req, res) => {
   res.render('index')
 })
+
+app.post('/URLS', (req, res) => {
+  console.log(req.body.URL)
+})
+
 
 
 // listen and start the server
