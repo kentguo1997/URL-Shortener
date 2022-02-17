@@ -8,6 +8,10 @@ const URLSchema = new Schema({
   URL: {
     type: String,
     required: true
+  },
+  shortenURL: {
+    type: String,
+    default: ''
   }
 })  
 
