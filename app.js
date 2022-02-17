@@ -1,7 +1,22 @@
 // Include packages in the project
 const express = require('express')
-const app = express()
+const mongoose = require('mongoose')
 const port = 3000
+
+const app = express()
+
+// connect to mongodb
+mongoose.connect('mongodb://localhost/URL-shortener') 
+
+const db = mongoose.connection
+
+db.on ('error', () => {
+  console.log('mongodb error!')
+})
+
+db.once ('open', () => {
+  console.log('mongodb connected!')
+})
 
 
 // routes setting
