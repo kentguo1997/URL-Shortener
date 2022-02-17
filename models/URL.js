@@ -5,13 +5,12 @@ const mongoose = require('mongoose')
 // Define the Schema
 const Schema = mongoose.Schema
 const URLSchema = new Schema({
-  URL: {
+  name: {
     type: String,
     required: true
   },
   shortenURL: {
-    type: String,
-    default: ''
+    type: String
   }
 })  
 
