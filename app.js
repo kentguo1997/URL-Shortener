@@ -3,6 +3,9 @@ const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const urlExists = require('promised-url-exists')
+
+const URLModel = require('./models/URL')
 const port = 3000
 
 const app = express()
@@ -37,7 +40,21 @@ app.get('/', (req, res) => {
 })
 
 app.post('/URLS', (req, res) => {
-  console.log(req.body.URL)
+  const URL = req.body.URL
+  
+  // determine if URL exists or not
+  urlExists(URL)
+    .then(({ exists }) => {
+      if (exists){
+        URLModel.create({ URL: URL })
+      } else {
+        console.log('Invalid URL')
+      }    
+    })
+    .catch(error => {
+      console.log(error);
+    })
+
 })
 
 
