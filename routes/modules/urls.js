@@ -7,8 +7,6 @@ const generateRandomIndex = require('../../generate-randomIndex')
 const URLModel = require('../../models/URL')
 const urlExists = require('promised-url-exists')
 
-
-
 // route setting of ('/urls')
 router.post('/', (req, res) => {
   const URL = req.body.URL
@@ -29,7 +27,6 @@ router.post('/', (req, res) => {
             if (existedURL.length > 0) {
               res.render('output', { shortName: 'http://localhost:3000/' + existedURL[0].shortName })
             } else {
-
               // the URL dose not exist
               let shortenURL = generateRandomIndex()
               // determine if the shortenURL already exists
@@ -55,13 +52,11 @@ router.post('/', (req, res) => {
         console.log('Invalid URL! Please check and enter again!')
         res.redirect('/')
       }
-    }) 
-    .catch(error => {
-      console.log(error);
     })
-
+    .catch(error => {
+      console.log(error)
+    })
 })
-
 
 // export
 module.exports = router

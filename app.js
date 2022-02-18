@@ -9,16 +9,13 @@ const port = 3000
 
 const app = express()
 
-
 // setting express-handlebars as template engine
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
-
 // default use setting
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(routes)
-
 
 // listen and start the server
 app.listen(port, () => {

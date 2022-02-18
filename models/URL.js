@@ -1,7 +1,6 @@
 // Include mongoose
 const mongoose = require('mongoose')
 
-
 // Define the Schema
 const Schema = mongoose.Schema
 const URLSchema = new Schema({
@@ -12,8 +11,7 @@ const URLSchema = new Schema({
   shortName: {
     type: String
   }
-})  
-
+})
 
 // export the model for other files to use
-module.exports = mongoose.model('URL', URLSchema) 
+module.exports = mongoose.model('URL', URLSchema)
