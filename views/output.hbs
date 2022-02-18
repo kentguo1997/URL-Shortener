@@ -1,7 +1,12 @@
-<label style="font-weight: 600; font-size:20px;">Success! Please use this link:</label>
+<div class="wrap d-flex flex-column justify-content-center align-items-center mt-2">
+  <label style="font-weight: 600; font-size:20px;">Success! Please use this link:</label>
+  <div class="copyShortenURL mt-2 mb-2">
+    <input type="text" id="shorten-URL" value="{{shortenURL}}" size="27" class="mb-3 text-center" readonly>
+    <button id="copy-button" class="btn btn-dark mx-3">Copy</button>
+  </div> 
+  <a href="/" style="text-decoration:none; color:#011F26; font-weight:700;">Back</a>
+</div>
 
-<input type="text" id="shorten-URL"  value="{{shortenURL}}" size="30" style="display: block;" readonly>
-<button id="copy-button">Copy</button>
 
 
 <script type="text/javascript">
