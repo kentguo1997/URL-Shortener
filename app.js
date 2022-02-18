@@ -90,6 +90,14 @@ app.post('/urls', (req, res) => {
 })
 
 
+// Use shortenURL to get to the page of the URL
+app.get('/:shortenIndex', (req, res) => {
+  const shortenIndex = req.params.shortenIndex
+  URLModel.findOne({ shortenURL: shortenIndex })
+    .then( URL => res.redirect(URL.name))
+    .catch( error => console.log(error) )
+})
+
 
 // listen and start the server
 app.listen(port, () => {
