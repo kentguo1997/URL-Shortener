@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 router.get('/:shortenIndex', (req, res) => {
   const shortenIndex = req.params.shortenIndex
-  URLModel.findOne({ shortenURL: shortenIndex })
+  URLModel.findOne({ shortName: shortenIndex })
     .then(URL => res.redirect(URL.name))
     .catch(error => console.log(error))
 })

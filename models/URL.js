@@ -9,7 +9,7 @@ const URLSchema = new Schema({
     type: String,
     required: true
   },
-  shortenURL: {
+  shortName: {
     type: String
   }
 })  

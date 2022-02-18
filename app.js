@@ -5,7 +5,6 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 
 const routes = require('./routes')
-const URLModel = require('./models/URL')
 const port = 3000
 
 const app = express()

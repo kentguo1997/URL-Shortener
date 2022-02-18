@@ -12,7 +12,7 @@ const urlExists = require('promised-url-exists')
 // route setting of ('/urls')
 router.post('/', (req, res) => {
   const URL = req.body.URL
-  let sameURL = []
+  let existedURL = []
 
   // determine if the URL is valid
   urlExists(URL)
@@ -23,28 +23,28 @@ router.post('/', (req, res) => {
         URLModel.find()
           .lean()
           .then(URLs => {
-            sameURL = URLs.filter(existedURL => existedURL.name === URL)
+            existedURL = URLs.filter(theURL => theURL.name === URL)
 
             // the URL already exists
-            if (sameURL.length > 0) {
-              res.render('output', { shortenURL: 'http://localhost:3000/' + sameURL[0].shortenURL })
+            if (existedURL.length > 0) {
+              res.render('output', { shortName: 'http://localhost:3000/' + existedURL[0].shortName })
             } else {
 
               // the URL dose not exist
               let shortenURL = generateRandomIndex()
               // determine if the shortenURL already exists
-              URLModel.findOne({ shortenURL: shortenURL }, (foundURL) => {
+              URLModel.findOne({ shortName: shortenURL }, (foundURL) => {
                 // the shortenURL does not exist
                 if (!foundURL) {
-                  URLModel.create({ name: URL, shortenURL: shortenURL })
-                  res.render('output', { shortenURL: 'http://localhost:3000/' + shortenURL })
+                  URLModel.create({ name: URL, shortName: shortenURL })
+                  res.render('output', { shortName: 'http://localhost:3000/' + shortenURL })
                 } else {
                   // the shortenURL already exists
-                  while (foundURL.shortenURL = shortenURL) {
+                  while (foundURL.shortName === shortenURL) {
                     shortenURL = generateRandomIndex()
                   }
-                  URLModel.create({ name: URL, shortenURL: shortenURL })
-                  res.render('output', { shortenURL: 'http://localhost:3000/' + shortenURL })
+                  URLModel.create({ name: URL, shortName: shortenURL })
+                  res.render('output', { shortName: 'http://localhost:3000/' + shortenURL })
                 }
               })
             }
@@ -53,8 +53,9 @@ router.post('/', (req, res) => {
       } else {
         // the URL is invalid
         console.log('Invalid URL! Please check and enter again!')
+        res.redirect('/')
       }
-    })
+    }) 
     .catch(error => {
       console.log(error);
     })
