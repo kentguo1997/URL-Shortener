@@ -1,1 +1,21 @@
-<h1>{{shortenURL}}</h1>
+<label style="font-weight: 600; font-size:20px;">Success! Please use this link:</label>
+
+<input type="text" id="shorten-URL"  value="{{shortenURL}}" size="30" style="display: block;" readonly>
+<button id="copy-button">Copy</button>
+
+
+<script type="text/javascript">
+  const theShortenURL = document.getElementById("shorten-URL")
+  const btnCopy = document.getElementById("copy-button")
+
+  btnCopy.onclick = function () {
+    // Select the text
+    theShortenURL.select()
+
+    // Copy the text
+    document.execCommand("Copy")
+    
+    alert('Copied!')
+
+  }
+</script>

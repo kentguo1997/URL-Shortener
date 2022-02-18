@@ -89,6 +89,10 @@ app.post('/urls', (req, res) => {
 
 })
 
+app.get('/urls', () => {
+  console.log('Shorten-URL created')
+})
+
 
 // Use shortenURL to get to the page of the URL
 app.get('/:shortenIndex', (req, res) => {
