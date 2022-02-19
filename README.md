@@ -31,7 +31,9 @@ A URL Shortener to turn the URL you input into a short URL
 5. Open browser to get into the url below:
 
    ```bash
-   Listening on http://localhost:3000
+   The server is listening on http://localhost:3000
+   mongodb connected!
+
    ```
 
 6. If you want to stop it: 
