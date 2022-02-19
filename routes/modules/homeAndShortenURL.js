@@ -12,6 +12,9 @@ router.get('/', (req, res) => {
 
 router.get('/:shortenIndex', (req, res) => {
   const shortenIndex = req.params.shortenIndex
+  if (shortenIndex === 'favicon.ico') {
+    return
+  }
   URLModel.findOne({ shortName: shortenIndex })
     .then(URL => res.redirect(URL.name))
     .catch(error => console.log(error))
